@@ -1,4 +1,3 @@
-# wep-app-project
 # lotusCare wepsite 
 
 # Description
