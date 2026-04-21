@@ -3,7 +3,6 @@
 session_start();
 require_once 'include/config.inc.php'; // اتصال قاعدة البيانات
 
-// جلب المنتجات من قاعدة البيانات
 try {
     $stmt = $pdo->query("SELECT id, name, image_path, price FROM products LIMIT 20"); 
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -102,7 +101,6 @@ try {
 
     .products-scroll::-webkit-scrollbar {
       display: none;
-      /* يخفي السكروول مثل سلة */
     }
 
     .section-title {
@@ -144,8 +142,8 @@ try {
       top: 33%;
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.07);   
       transition: 0.3s;
-     display: flex;             /* تفعيل Flexbox */
-    justify-content: center;   /* محاذاة العناصر أفقياً بالوسط */
+     display: flex;           
+    justify-content: center; 
     align-items: center; 
       padding: 20px;
       box-shadow: #77c393;
@@ -161,8 +159,8 @@ try {
       color: #C05285;
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.07);   
       transition: 0.3s;
-     display: flex;             /* تفعيل Flexbox */
-    justify-content: center;   /* محاذاة العناصر أفقياً بالوسط */
+     display: flex;            
+    justify-content: center;  
     align-items: center; 
       padding: 20px;
       box-shadow: #77c393;
@@ -181,8 +179,8 @@ try {
       color: #C05285;
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.07);   
       transition: 0.3s;
-     display: flex;             /* تفعيل Flexbox */
-    justify-content: center;   /* محاذاة العناصر أفقياً بالوسط */
+     display: flex;           
+    justify-content: center;  
     align-items: center; 
       padding: 20px;
       box-shadow: #272e29ff;
@@ -235,7 +233,7 @@ try {
 <div class="products-scroll">
 <?php
 // جلب المنتجات من قاعدة البيانات
-$stmt = $pdo->query("SELECT id, name, image_path FROM products LIMIT 20"); // ممكن تحددي عدد المنتجات
+$stmt = $pdo->query("SELECT id, name, image_path FROM products LIMIT 20"); 
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($products as $product): ?>
