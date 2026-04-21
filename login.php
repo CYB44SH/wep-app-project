@@ -1,10 +1,9 @@
 <?php
 session_start();
-require_once 'include/config.inc.php'; // اتصال PDO بالداتا بيس
+require_once 'include/config.inc.php';  
 
 $error = '';
 
-// تحقق إذا تم إرسال الفورم
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
@@ -12,15 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($email === '' || $password === '') {
         $error = 'الرجاء تعبئة جميع الحقول';
     } else {
-        // جلب المستخدم حسب الإيميل
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            // التحقق من كلمة المرور
             if (password_verify($password, $user['password'])) {
-                // تسجيل الدخول بنجاح
                 $_SESSION['user_id'] = $user['id'];
                 header('Location: profile.php'); // تحويل البروفايل
                 exit;
@@ -42,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="include/header_footer.css">
 
 <style>
-/* نفس ستايل تسجيل الدخول */
 .lotus-login-container {
   width: 360px;
   margin: 130px auto;
