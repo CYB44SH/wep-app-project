@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-require_once 'include/config.inc.php'; // اتصال قاعدة البيانات
+require_once 'include/config.inc.php'; 
 
 try {
     $stmt = $pdo->query("SELECT id, name, image_path, price FROM products LIMIT 20"); 
