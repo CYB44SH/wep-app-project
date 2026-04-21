@@ -2,7 +2,6 @@
 session_start();
 require_once 'include/config.inc.php';
 
-// التأكد من تسجيل الدخول
 if(!isset($_SESSION['user_id'])){
     header("Location: login.php");
     exit;
@@ -10,7 +9,7 @@ if(!isset($_SESSION['user_id'])){
 
 $user_id = $_SESSION['user_id'];
 
-// جلب منتجات الوش ليست لعرضها
+
 $stmt = $pdo->prepare("
     SELECT w.product_id AS pid, p.name, p.image_path, p.price
     FROM wishlist w
