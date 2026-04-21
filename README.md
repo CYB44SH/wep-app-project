@@ -14,7 +14,7 @@ Since my specialization is cybersecurity, I focused on technical and security de
  # Tools 
 Visual Studio
 xampp control panel
-Languages:
+# Languages
 -php
 -javascript
 -html
