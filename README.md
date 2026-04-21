@@ -11,7 +11,7 @@ Since my specialization is cybersecurity, I focused on technical and security de
 -Terminate the user session and destroy the cookie
 -Password management and setting instructions for it
 
- # Tools & Technologies
+ # Tools 
 Visual Studio
 xampp control panel
 Languages:
