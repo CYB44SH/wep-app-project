@@ -155,18 +155,17 @@
   left: 50%;
   transform: translateX(-50%);
   top: 50%;
-  transform: translate(-50%, -50%); /* يركّز تمامًا في الوسط عمودياً وأفقياً */
+  transform: translate(-50%, -50%); 
   z-index: 55;
-  pointer-events: none;    /* يخلي النقرات تمر على الأزرار لو اللوقو فوقهم */
+  pointer-events: none;   
 }
 
-/* صورة اللوقو صغيرة وأنيقة */
 .logo img {
-  width: 100px;             /* الحجم الصغير، عدّلي حسب اللي تحبين */
+  width: 100px;             
   height: 100px;
   object-fit: contain;
   display: block;
-  border-radius: 8px;      /* اختياري */
+  border-radius: 8px;  
   background: transparent;
 }
 
