@@ -11,25 +11,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $confirm  = trim($_POST['confirm_password']);
     $skin     = trim($_POST['skin_type']);
 
-    // تحقق أن الحقول ليست فارغة
     if ($name === "" || $email === "" || $password === "" || $confirm === "") {
        $error = 'الرجاء تعبئة جميع الحقول';
     }
-    // تحقق من تطابق كلمة المرور
     elseif ($password !== $confirm) {
        $error = 'كلمة المرور غير متطابقة';
     } else {
-        // التحقق إذا الإيميل مستخدم
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->execute([$email]);
 
         if ($stmt->rowCount() > 0) {
             $error = 'البريد الالكتروني مستخدم مسبقا';
         } else {
-            // تشفير كلمة المرور
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            // إضافة المستخدم لقاعدة البيانات
             $stmt = $pdo->prepare("INSERT INTO users (name, email, password, skin_type) VALUES (?, ?, ?, ?)");
             $saved = $stmt->execute([$name, $email, $hashedPassword, $skin]);
 
@@ -47,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <link rel="stylesheet" href="include/header_footer.css">
 
 <style>
-/* صندوق موحّد لصفحات الـ Auth (تسجيل / دخول / بروفايل) */
 .lotus-auth-container {
   width: 360px;
   margin: 130px auto;
@@ -59,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   font-family: "Cairo", sans-serif;
 }
 
-/* العنوان الفرعي */
 .lotus-auth-title {
   text-align: center;
   color: #C85C8E;
@@ -75,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   margin: 6px 0 20px;
 }
 
-/* المجموعات */
 .lotus-input-group {
   margin-bottom: 16px;
 }
@@ -106,7 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   box-shadow: 0 0 0 2px rgba(119,195,147,0.25);
 }
 
-/* زر */
 .lotus-auth-btn {
   width: 100%;
   background: linear-gradient(135deg, #77c393, #3a6f43);
@@ -126,7 +117,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   box-shadow: 0 6px 16px rgba(58,111,67,0.45);
 }
 
-/* النص اللي تحت */
 .lotus-auth-switch {
   margin-top: 14px;
   text-align: center;
@@ -234,7 +224,6 @@ email.addEventListener("input", function () {
     }
 });
 
-// تحقق عند الخروج من خانة كلمة المرور
 password.addEventListener("blur", function () {
     if (!passwordPattern.test(password.value)) {
         passwordError.textContent =
@@ -243,7 +232,6 @@ password.addEventListener("blur", function () {
         passwordError.textContent = "";
     }
 
-    // تحقق من تطابق التأكيد إذا تم لمس خانة التأكيد
     if (confirmTouched && confirmPassword.value !== "") {
         if (password.value !== confirmPassword.value) {
             confirmError.textContent = "كلمتا المرور غير متطابقتين ⚠";
@@ -253,7 +241,6 @@ password.addEventListener("blur", function () {
     }
 });
 
-// تحقق عند الخروج من خانة التأكيد
 confirmPassword.addEventListener("blur", function () {
     confirmTouched = true;
 
@@ -264,7 +251,6 @@ confirmPassword.addEventListener("blur", function () {
     }
 });
 
-// منع إرسال الفورم إذا فيه أخطاء
 form.addEventListener("submit", function(e) {
     let valid = true;
 
