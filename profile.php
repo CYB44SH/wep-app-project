@@ -1,16 +1,13 @@
 <?php
 session_start();
-require_once 'include/config.inc.php'; // ملف الاتصال بالداتا بيس
+require_once 'include/config.inc.php'; 
 
-// افتراضياً: المستخدم غير مسجل دخول
 $user_logged_in = false;
 $user = null;
 
-// تحقق إذا كان هناك ID مستخدم في الجلسة
 if (isset($_SESSION['user_id'])) {
     $user_id = (int) $_SESSION['user_id'];
 
-    // جلب بيانات المستخدم من قاعدة البيانات
     $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
     $stmt->execute([$user_id]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +26,6 @@ if (isset($_SESSION['user_id'])) {
 <link rel="stylesheet" href="include/header_footer.css">
 
 <style>
-/* نفس ستايل البروفايل */
 .lotus-profile-container {
   width: 360px;
   margin: 130px auto;
@@ -121,7 +117,6 @@ if (isset($_SESSION['user_id'])) {
     <div class="lotus-profile-avatar">
         <?php
         if ($user_logged_in) {
-            // الحرف الأول من الاسم
             echo strtoupper(substr($user['name'], 0, 1));
         } else {
             echo "";
