@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     forms.forEach(form => {
         form.addEventListener('submit', function(e){
-            e.preventDefault(); // منع إعادة تحميل الصفحة
+            e.preventDefault(); 
 
             const formData = new FormData(this);
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(res => res.json())
             .then(data => {
-                alert(data.message); // رسالة نجاح أو نفاد المنتج
+                alert(data.message); 
             })
           
           
