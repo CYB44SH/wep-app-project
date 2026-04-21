@@ -16,18 +16,18 @@ Since my specialization is cybersecurity, I focused on technical and security de
 Visual Studio
 xampp control panel
 Languages:
-php
-javascript
-html
-css
-sql 
+-php
+-javascript
+-html
+-css
+-sql 
 
 # Created by
-Rawan Al-Juhani @rwnalgohani
-Shahd Al-Qaidi
-Dhay Al-Harbi
-Shawq Al-Juhani
-Samahir Al-Rashidi
+-Rawan Al-Juhani @rwnalgohani
+-Shahad Al-Qaidi
+-Dhay Al-Harbi
+-Shawq Al-Juhani
+-Samahir Al-Rashidi
 ح
 حاح
 
