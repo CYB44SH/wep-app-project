@@ -8,7 +8,6 @@ if (($_POST['product_iissetd'])) {
 
     $product_id = $_POST['product_id'];
 
-    // نجيب الكمية
     $stmt = $pdo->prepare("SELECT quantity FROM cart WHERE user_id = :user_id AND product_id = :product_id");
     $stmt->execute([
         ':user_id' => $user_id,
@@ -17,7 +16,6 @@ if (($_POST['product_iissetd'])) {
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($item) {
-        // نرجّع الكمية للمخزون
         $stmt = $pdo->prepare("UPDATE products SET stock = stock + :qty WHERE id = :id");
         $stmt->execute([
             ':qty' => $item['quantity'],
@@ -25,7 +23,6 @@ if (($_POST['product_iissetd'])) {
         ]);
      
 
-        // نحذف المنتج من السلة
         $stmt = $pdo->prepare("DELETE FROM cart WHERE user_id = :user_id AND product_id = :product_id");
         $stmt->execute([
             ':user_id' => $user_id,
